@@ -1,0 +1,17 @@
+generate:
+  models:
+    names: [ vahadane ]
+
+  data_path: data/masson/
+  a2b: false
+  batch_size: 32
+  results_path: results/he_fake/
+  add_suffix: false
+  device: -1
+  num_workers: 1
+  center_crop: 256
+  target_path: data/he
+  target_samples: 10
+
+
+

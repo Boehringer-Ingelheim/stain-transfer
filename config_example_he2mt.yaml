@@ -1,0 +1,30 @@
+generate:
+  models:
+    names: [ cyclegan, cut, munit, drit, staingan, unit, stainnet, utom, pix2pix, macenko, colorstat, vahadane ]
+
+    weights: [
+               models/cyclegan_he2mt.pth,
+               models/cut_he2mt.pth,
+               models/munit.pth,
+               models/drit.pth,
+               models/staingan_he2mt.pth,
+               models/unit.pth,
+               models/stainnet_he2mt.pth,
+               models/utom_he2mt.pth,
+               models/pix2pix_he2mt.pth,
+               models/macenko_he2mt.pth,
+               models/colorstat_he2mt.pth,
+               models/vahadane_he2mt.pth,
+    ]
+
+
+  data_path: data/he/
+  a2b: true
+  batch_size: 32
+  results_path: results/masson_fake/
+  add_suffix: false
+  device: 0
+  num_workers: 4
+  center_crop: false # 256
+
+

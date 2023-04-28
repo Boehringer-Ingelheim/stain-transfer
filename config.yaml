@@ -1,0 +1,136 @@
+# Generate fake images with desired models.
+generate:
+  models:
+    names: [ cyclegan ]
+    # weights: <specify to override default weights>
+  ##############################################################################
+  #--> List of model architectures with their associated weights.
+  #--> Only models in README are allowed, that is:
+  #--> colorstat, cut, cyclegan, drit, macenko, munit, pix2pix, staingan,
+  #--> stainnet, unit, utom and vahadane for generating fakes and
+  #--> munitaveragetensor, colorstataveragetensor, macenkoaveragetensor and
+  #--> vahadaneaveragetensor for computing average tensors.
+  #--> There must be the same number of weights as names. If weights are not
+  #--> provided, then default weights will be used.
+  ##############################################################################
+
+  data_path: data/processed/HE/
+  ##############################################################################
+  #--> Input source images path.
+  ##############################################################################
+
+  a2b: true
+  ##############################################################################
+  #--> Defaults to true. a2b set to true means that <data_path> contains images
+  #--> from domain A, while a2b set to false means that <data_path> contains
+  #--> images from domain B.
+  #--> Needed for Drit, DritAverageTensor, Unit, Munit and MunitAverageTensor.
+  #--> For other models if weights is not provided, a2b will be used to load
+  #--> default weights.
+  #--> For trained and provided models, domain A is HE and domain B is MT, so
+  #--> a2b set to true implies translation from HE to MT, and so <data_path>
+  #--> contains domain HE images while a2b set to false implies translation from
+  #--> MT to HE, and so <data_path> contains domain MT images.
+  ##############################################################################
+
+  batch_size: 32
+  ##############################################################################
+  #--> Batch size.
+  ##############################################################################
+
+  results_path: results
+  ##############################################################################
+  #--> Output results path for fake generated images. Default will be used if
+  #--> not specified.
+  ##############################################################################
+
+  add_suffix: false
+  ##############################################################################
+  #--> Whether to include model name in generated images or not.
+  ##############################################################################
+
+  device: -1
+  ##############################################################################
+  #--> Device to run on. Negative numbers for CPU. A positive number indicates
+  #--> GPU ID.
+  ##############################################################################
+
+  num_workers: 4
+  ##############################################################################
+  #--> Number of workers for data loaders.
+  ##############################################################################
+
+  center_crop: 256
+  ##############################################################################
+  #--> If specified (as an int value), center crop transformation will be applied
+  #--> to input images. Set false or comment to disable.
+  ##############################################################################
+
+  # target_path: data/processed/masson_trichrome
+  ##############################################################################
+  #--> Only for Macenko, Vahadane, ColorStat, Drit and Munit.
+  #--> This is a path with images from the opposite domain to be used as target.
+  #--> From this path, images are sampled, and used as targets for computing
+  #--> styles, attributes, or stain matrices and 99th percentile of concentration
+  #--> matrices, depending on the model.
+  ##############################################################################
+
+  # target_samples: 2
+  ##############################################################################
+  #--> Number of target samples to consider for each source image. Used only
+  # when target_path is specified for colorstat, macenko and vahadane.
+  #-->Set to -1 if you want to use all samples in the target path.
+  #-->For munit and drit target_samples is ignored, the used number of samples will
+  # be the same as the batch size.
+  ##############################################################################
+
+  # target_tensor: <path to your precomputed target tensor>
+  ##############################################################################
+  #--> Only for Macenko, Vahadane, ColorStat, Drit and Munit.
+  #--> If target_path is provided, then this is ignored.
+  #--> For Drit target_tensor is a precomputed attribute tensor.
+  #--> For Munit target_tensor is a precomputed style tensor.
+  #--> For Macenko and Vahadane target_tensor is a precomputed tensor with
+  #--> stain matrix and 99th percentile of the concentration matrix.
+  #--> For ColorStat target_tensor is a precomputed tensor with mean and
+  #--> standard deviation.
+  #--> To compute average target tensors, use any of the following names in the
+  #--> models section: dritaveragetensor, munitaveragetensor, macenkoaveragetensor,
+  #--> vahadaneaveragetensor and colorstataveragetensor.
+  ##############################################################################
+
+  # rotate: false
+  ##############################################################################
+  #--> Whether to generate rotated versions of input image or not.
+  ##############################################################################
+
+
+# Compute classical metrics and use resulting csv to use visualizer.
+metrics:
+  classic_metrics: [ ssim ]
+  ##############################################################################
+  #--> ssim metric to be computed
+  ##############################################################################
+
+  source: data/processed/HE/
+  ##############################################################################
+  #--> Input source images path.
+  ##############################################################################
+
+  fake: results/images/fakes
+  ##############################################################################
+  #--> Input fake images path.
+  ##############################################################################
+
+  results_path: results
+  ##############################################################################
+  #--> Results path. Metrics csv files will be saved here.
+  ##############################################################################
+
+  # center_crop: 256
+  ##############################################################################
+  #--> If specified (as an int value), center crop transformation will be
+  #--> applied to input images. Set false or comment to disable.
+  ##############################################################################
+
+

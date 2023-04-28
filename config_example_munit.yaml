@@ -1,0 +1,23 @@
+generate:
+
+  models:
+    names: [ munit ]
+    weights: [ models/munit.pth ]
+
+  a2b: true
+
+  batch_size: 32
+
+  data_path: data/he/
+  results_path: results/masson_fake/
+  add_suffix: false
+  device: 0
+  num_workers: 4
+
+  center_crop: false
+  target_path: data/masson/
+  target_samples: -1
+
+
+
+
