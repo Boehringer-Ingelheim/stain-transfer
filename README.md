@@ -4,6 +4,8 @@
 
 This repository accompanies Zingman et al. [A comparative evaluation of image-to-image translation methods for stain transfer in histopathology](https://arxiv.org/abs/2303.17009) ([MIDL, 2023](https://2023.midl.io/)). The paper analyses strengths and weaknesses of image-to-image translation methods for stain transfer in histopathology, thereby allowing a rational choice of the most suitable approach.
 
+![translation H&E<->Masson Trichrome](gif/v1.gif) ![translation H&E<->Masson Trichrome](gif/v2.gif) ![translation H&E<->Masson Trichrome](gif/v3.gif)
+
 Project Organization
 --------------------
 
@@ -48,6 +50,8 @@ Create a working environment, with e.g. conda and activate it.
 It is recommended not to use virtualenv as there are problems with the spams library.
 
 Clone this repository: ```git clone https://github.com/Boehringer-Ingelheim/stain-transfer```
+
+Download the data and models from: (links will follow)
 
 Install spams: `conda install -c conda-forge python-spams`.
 
