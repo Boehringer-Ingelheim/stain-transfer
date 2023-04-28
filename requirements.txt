@@ -10,6 +10,6 @@ PyYAML==5.4.1
 scikit-image==0.18.3
 scipy==1.7.1
 staintools==2.1.2
-torch==1.9.0
+torch==1.13.1
 torchvision==0.10.0
 tqdm==4.62.2
