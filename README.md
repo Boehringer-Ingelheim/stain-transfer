@@ -1,8 +1,8 @@
-# Stain Transfer
+# Image-to-image translation methods for stain transfer in histopathology
 
 ----------------
 
-Stain transfer on histopathological images.
+This repository accompanies Zingman et al. [A comparative evaluation of image-to-image translation methods for stain transfer in histopathology](https://arxiv.org/abs/2303.17009) ([MIDL, 2023](https://2023.midl.io/)). The paper analyses strengths and weaknesses of image-to-image translation methods for stain transfer in histopathology, thereby allowing a rational choice of the most suitable approach.
 
 Project Organization
 --------------------
@@ -302,7 +302,6 @@ Use `metric_calculation.py` to compute the metrics, e.g.:
 
 `python metric_calculation.py --real_source data/he/ --real_target data/masson/ --fakes results/masson_fake/ --device 0`
 
-
 Provide the following
 required arguments:
 
@@ -310,4 +309,18 @@ required arguments:
 - real_target: path to real target images (for FID, WD)
 - fakes: path to folder containing folders with fake images
 
-A csv with SSIM, FID and WD will be generated. 
+A csv with SSIM, FID and WD will be generated.
+
+Citing
+----------------------------
+```markdown
+@inproceedings{
+zingman2023a,
+title={A comparative evaluation of image-to-image translation methods for stain transfer in histopathology},
+author={Igor Zingman and Sergio Frayle and Ivan Tankoyeu and Sergey Sukhanov and Fabian Heinemann},
+booktitle={Medical Imaging with Deep Learning},
+year={2023},
+url={https://openreview.net/forum?id=leVAXRDthXI}
+}
+```
+ 
