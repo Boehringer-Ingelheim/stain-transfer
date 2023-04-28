@@ -4,7 +4,7 @@ clean-fid
 opencv-python==4.5.3.56
 pandas==1.3.3
 phasepack==1.5
-Pillow==8.3.2
+Pillow==9.3.0
 pyFFTW==0.12.0
 PyYAML==5.4.1
 scikit-image==0.18.3
