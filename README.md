@@ -51,54 +51,96 @@ It is recommended not to use virtualenv as there are problems with the spams lib
 
 Clone this repository: ```git clone https://github.com/Boehringer-Ingelheim/stain-transfer```
 
-Download the data and models from: (links will follow)
-
 Install spams: `conda install -c conda-forge python-spams`.
 
 Install the required modules `pip install -r requirements.txt`.
 
 Getting started
 ---------------
-First, download trained models and histopathological data.
+Download trained models and test or validation histopathological dataset from https://osf.io/byf27/.
+Trained models can be saved in ```models/``` folder, H&E stained samples and Masson's trichrome stained samples 
+from the dataset can be saved in ```data/he/``` and ```data/masson/``` folders.
 
-Use the `main.py` file and a configuration yaml to generate fake images and also
-to compute and inspect metrics when paired images are available. The results are
-saved in the _results_ directory if a `results_path` is not specified. Here is a
-simple example of a yaml for generating fakes with cyclegan:
-
-```yaml
-generate:
-  models:
-    names: [ cyclegan ]
-    weights: [ models/cyclegan_he2mt.pth ]
-  a2b: true
-  batch_size: 2
-  data_path: data/processed/HE/
-  results_path: fakes
-  device: -1
-  num_workers: 4
-metrics:
-  classic_metrics: [ ssim ]
-  source: data/processed/HE/
-  fake: fakes/CycleGan
-```
-
-Launch executions in this order:
-
-1. `python main.py --conf config.yaml --generate` to generate and save images,
-   to a new folder named _fakes/CycleGan_. Note that the name of the model is
-   added as subfolder.
-2. `python main.py --conf config.yaml --metrics` to compute and save SSIM
-   between previously generated fake images (`fake` path field) and the original ones (`source` path field). Since a
-   `results_path` field is not provided, the metrics are saved to their default
-   location, in _results/statistics_. They are saved because they can later be
-   used with the visualizer.
-
-A sample configuration yaml (`config.yaml`) is provided as a baseline to conduct
-experiments, with detailed comments to facilitate executions.
+- Run `python main.py --conf config_example_he2mt.yaml`, or use a different yaml configuration file 
+avaialble in the root folder of the project. This will generate artificially created samples (images with Masson's 
+Trichrome artificially stained tissue from images of H&E stained tissue). The detailed description
+of the fields in the configuration file is available in ```config.yaml``` 
+- Run `python metric_calculation.py --real_source data/he/ --real_target data/masson/ --fakes results/masson_fake/`. 
+The given paths correspond to the paths in ```config_example_he2mt.yaml```.  This will
+generate excel file with computed FID, WD, and SSIM metrics that evaluate the quality of the
+created images of artificially stained tissue. 
 
 
-Generating fakes
+
+
+[//]: # (Use the `main.py` file and a configuration yaml to generate fake images and also)
+
+[//]: # (to compute and inspect metrics when paired images are available. The results are)
+
+[//]: # (saved in the _results_ directory if a `results_path` is not specified. Here is a)
+
+[//]: # (simple example of a yaml for generating fakes with cyclegan:)
+
+[//]: # ()
+[//]: # (```yaml)
+
+[//]: # (generate:)
+
+[//]: # (  models:)
+
+[//]: # (    names: [ cyclegan ])
+
+[//]: # (    weights: [ models/cyclegan_he2mt.pth ])
+
+[//]: # (  a2b: true)
+
+[//]: # (  batch_size: 2)
+
+[//]: # (  data_path: data/processed/HE/)
+
+[//]: # (  results_path: fakes)
+
+[//]: # (  device: -1)
+
+[//]: # (  num_workers: 4)
+
+[//]: # (metrics:)
+
+[//]: # (  classic_metrics: [ ssim ])
+
+[//]: # (  source: data/processed/HE/)
+
+[//]: # (  fake: fakes/CycleGan)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (Launch executions in this order:)
+
+[//]: # ()
+[//]: # (1. `python main.py --conf config.yaml --generate` to generate and save images,)
+
+[//]: # (   to a new folder named _fakes/CycleGan_. Note that the name of the model is)
+
+[//]: # (   added as subfolder.)
+
+[//]: # (2. `python main.py --conf config.yaml --metrics` to compute and save SSIM)
+
+[//]: # (   between previously generated fake images &#40;`fake` path field&#41; and the original ones &#40;`source` path field&#41;. Since a)
+
+[//]: # (   `results_path` field is not provided, the metrics are saved to their default)
+
+[//]: # (   location, in _results/statistics_. They are saved because they can later be)
+
+[//]: # (   used with the visualizer.)
+
+[//]: # ()
+[//]: # (A sample configuration yaml &#40;`config.yaml`&#41; is provided as a baseline to conduct)
+
+[//]: # (experiments, with detailed comments to facilitate executions.)
+
+
+Generating artificially stained samples 
 ----------------
 All parameters for generating fakes are inside the `generate` key in the yaml.
 You will find a `models` key here which is for specifying what models to use,
@@ -277,28 +319,43 @@ Computed average tensors will be saved in _results/av_tensors_ folder if no
 sub-folder with computed tensors. The computed tensors can then be set
 as `target_tensor` when generating fakes.
 
-Computing metrics between image pairs
-------------------------
+[//]: # (Computing metrics between image pairs)
 
-Metrics can be computed for paired images. Specify the source and target
-directories containing real images as well as a directory with fake images. You
-can copy fake images from different models to the fake directory and calculate
-metrics across different models at once. 
+[//]: # (------------------------)
 
-Available metrics are:
+[//]: # ()
+[//]: # (Metrics can be computed for paired images. Specify the source and target)
 
-- ssim
+[//]: # (directories containing real images as well as a directory with fake images. You)
 
-Visualization Tool
-------------------
+[//]: # (can copy fake images from different models to the fake directory and calculate)
 
-Once you have generated fake images and calculated metrics you can inspect and
-compare results with the visualization tool.
+[//]: # (metrics across different models at once. )
 
-Run `python visualizer.py` to launch the visualization tool. Inside this file
-specify the configuration dictionary. A metrics csv file with results generated
-from previous step is needed. Only models and metrics found in this file can be
-inspected. Also specify all desired metrics to inspect.
+[//]: # ()
+[//]: # (Available metrics are:)
+
+[//]: # ()
+[//]: # (- ssim)
+
+[//]: # ()
+[//]: # (Visualization Tool)
+
+[//]: # (------------------)
+
+[//]: # ()
+[//]: # (Once you have generated fake images and calculated metrics you can inspect and)
+
+[//]: # (compare results with the visualization tool.)
+
+[//]: # ()
+[//]: # (Run `python visualizer.py` to launch the visualization tool. Inside this file)
+
+[//]: # (specify the configuration dictionary. A metrics csv file with results generated)
+
+[//]: # (from previous step is needed. Only models and metrics found in this file can be)
+
+[//]: # (inspected. Also specify all desired metrics to inspect.)
 
 Computing SSIM, FID, WD metrics 
 --------------------------

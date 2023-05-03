@@ -40,7 +40,7 @@ if __name__ == '__main__':
     parser.add_argument('--output', default=None,
                         help='Path to save computed metrics. If not specified '
                              'will be saved in fakes path.')
-    parser.add_argument('--device', type=int, default=-1,
+    parser.add_argument('--device', type=int, default=0,
                         help='Device for running FID computations. -1 for CPU.')
     parser.add_argument('--batch_size', type=int, default=32,
                         help='Batch size for FID')
