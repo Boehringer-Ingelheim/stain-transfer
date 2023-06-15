@@ -374,7 +374,7 @@ A csv with SSIM, FID and WD will be generated.
 
 Results 
 --------------------------
-Performance of different Image-to-Image translation methods on validation dataset (please see the details in [A comparative evaluation of image-to-image translation methods for stain transfer in histopathology](https://arxiv.org/abs/2303.17009).
+Performance of different Image-to-Image translation methods on validation dataset (please, see the details in [A comparative evaluation of image-to-image translation methods for stain transfer in histopathology](https://arxiv.org/abs/2303.17009)).
 
 | Model     | FID $\downarrow$  | WD $\times 10^4$ $\downarrow$   | SSIM $\uparrow$  |
 |-----------|-------|-------|-------|
