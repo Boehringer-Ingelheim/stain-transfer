@@ -376,7 +376,7 @@ Results
 --------------------------
 Performance of different Image-to-Image translation methods on validation dataset (please see the details in [A comparative evaluation of image-to-image translation methods for stain transfer in histopathology](https://arxiv.org/abs/2303.17009).
 
-| Model     | FID   | WD    | SSIM  |
+| Model     | FID $\downarrow$  | WD $\times 10^4$ $\downarrow$   | SSIM $\uparrow$  |
 |-----------|-------|-------|-------|
 | CycleGAN  | 16.33 | 1.46  | 0.951 |
 | CUT       | 17.10 | 1.60  | 0.914 |
