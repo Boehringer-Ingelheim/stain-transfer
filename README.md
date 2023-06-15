@@ -372,6 +372,27 @@ required arguments:
 
 A csv with SSIM, FID and WD will be generated.
 
+Results 
+--------------------------
+Performance of different Image-to-Image translation methods on validation dataset (please see the details in [A comparative evaluation of image-to-image translation methods for stain transfer in histopathology](https://arxiv.org/abs/2303.17009).
+
+| Model     | FID   | WD    | SSIM  |
+|-----------|-------|-------|-------|
+| CycleGAN  | 16.33 | 1.46  | 0.951 |
+| CUT       | 17.10 | 1.60  | 0.914 |
+| MUNIT     | 19.20 | 1.61  | 0.871 |
+| StainGAN  | 19.59 | 3.27  | 0.952 |
+| UNIT      | 20.23 | 2.54  | 0.940 |
+| UTOM      | 20.64 | 2.32  | 0.952 |
+| DRIT      | 22.83 | 2.06  | 0.915 |
+| Pix2Pix   | 48.47 | 8.42  | 0.998 |
+| StainNet  | 50.49 | 11.41 | 0.972 |
+| ColorStat | 62.13 | 9.60  | 0.974 |
+| Macenko   | 70.39 | 12.90 | 0.926 |
+| Vahadane  | 76.55 | 15.14 | 0.911 |
+
+
+
 Citing
 ----------------------------
 ```markdown
