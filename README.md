@@ -2,7 +2,7 @@
 
 ----------------
 
-This repository accompanies Zingman et al. [A comparative evaluation of image-to-image translation methods for stain transfer in histopathology](https://arxiv.org/abs/2303.17009) ([MIDL, 2023](https://2023.midl.io/)). The paper analyses strengths and weaknesses of image-to-image translation methods for stain transfer in histopathology, thereby allowing a rational choice of the most suitable approach.
+This repository accompanies Zingman et al. [A comparative evaluation of image-to-image translation methods for stain transfer in histopathology](https://proceedings.mlr.press/v227/zingman24a.html) ([MIDL, 2023](https://2023.midl.io/)). The paper analyses strengths and weaknesses of image-to-image translation methods for stain transfer in histopathology, thereby allowing a rational choice of the most suitable approach.
 
 ![translation H&E<->Masson Trichrome](gif/v1.gif) ![translation H&E<->Masson Trichrome](gif/v2.gif) ![translation H&E<->Masson Trichrome](gif/v3.gif)
 
@@ -374,7 +374,7 @@ A csv with SSIM, FID and WD will be generated.
 
 Results 
 --------------------------
-Performance of different Image-to-Image translation methods on validation dataset (please, see the details in [A comparative evaluation of image-to-image translation methods for stain transfer in histopathology](https://arxiv.org/abs/2303.17009)).
+Performance of different Image-to-Image translation methods on validation dataset (please, see the details in [A comparative evaluation of image-to-image translation methods for stain transfer in histopathology](https://proceedings.mlr.press/v227/zingman24a.html)).
 
 | Model     | FID $\downarrow$  | WD $\times 10^4$ $\downarrow$   | SSIM $\uparrow$  |
 |-----------|-------|-------|-------|
@@ -396,13 +396,13 @@ Performance of different Image-to-Image translation methods on validation datase
 Citing
 ----------------------------
 ```markdown
-@inproceedings{
-zingman2023a,
-title={A comparative evaluation of image-to-image translation methods for stain transfer in histopathology},
-author={Igor Zingman and Sergio Frayle and Ivan Tankoyeu and Sergey Sukhanov and Fabian Heinemann},
-booktitle={Medical Imaging with Deep Learning},
-year={2023},
-url={https://openreview.net/forum?id=leVAXRDthXI}
+@inproceedings{zingman2024comparative,
+  title={A comparative evaluation of image-to-image translation methods for stain transfer in histopathology},
+  author={Zingman, Igor and Frayle, Sergio and Tankoyeu, Ivan and Sukhanov, Sergey and Heinemann, Fabian},
+  booktitle={Medical Imaging with Deep Learning},
+  pages={1509--1525},
+  year={2024},
+  organization={PMLR}
 }
 ```
  
